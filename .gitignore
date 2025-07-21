@@ -3,6 +3,9 @@ LunarLander/
 *.png
 *.gif
 
+!fitness-plot.png
+!lunarlander.gif
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
