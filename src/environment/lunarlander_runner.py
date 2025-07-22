@@ -20,7 +20,7 @@ def evaluate_genome(genome, input_size, hidden1_size, hidden2_size, output_size,
         nn = NeuralNetwork(input_size, hidden1_size, hidden2_size, output_size, genome)
 
         while not done:
-            if render:
+            if render and (generation == 0 or generation % 100 == 0):
                 frame = env.render()
                 frames.append(frame)
 
@@ -36,8 +36,8 @@ def evaluate_genome(genome, input_size, hidden1_size, hidden2_size, output_size,
         env.close()
         total_rewards.append(total_reward)
 
-        if render and total_reward > 199:
-            imageio.mimsave(f"assets/gifs/lunarlander_{generation}.{n_genome}.{seed}_{total_reward}.gif", frames, fps = 45, loop=0)
+        if render and (generation == 0 or generation % 100 == 0):
+            imageio.mimsave(f"assets/gifs/lunarlander_{generation}.{n_genome}.{seed}_{total_reward:.2f}.gif", frames, fps = 45, loop=0)
 
 
     return total_reward

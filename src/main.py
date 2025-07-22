@@ -17,7 +17,7 @@ def main():
 
     population_size = 100
     mutation_rate = 0.01
-    generations = 200
+    generations = 1000
 
     render = True if arg.render else False
 
