@@ -29,9 +29,9 @@ class GeneticAlgorithm:
 
     def evaluate_population(self, generation):
         fitness_scores = []
-        seed = int(random.random() * 100)
+        seeds = [random.randint(0, 1000) for _ in range(1)]
         for i, genome in enumerate(self.population):
-            fitness = evaluate_genome(genome, self.input_size, self.hidden1_size, self.hidden2_size, self.output_size, i ,generation, seed, self.render)
+            fitness = evaluate_genome(genome, self.input_size, self.hidden1_size, self.hidden2_size, self.output_size, i ,generation, seeds, self.render)
             fitness_scores.append((genome, fitness))
 
         fitness_scores.sort(key=lambda x: x[1], reverse=True)
@@ -43,24 +43,24 @@ class GeneticAlgorithm:
         return parents
 
     def crossover(self, parent1, parent2):
-        #child = np.array([np.random.choice([g1, g2])
-        #                  for g1, g2 in zip(parent1, parent2)])
-        #return child
-        alpha = 0.5
-        return alpha * parent1 + (1 - alpha) * parent2
+        child = np.array([np.random.choice([g1, g2])
+                          for g1, g2 in zip(parent1, parent2)])
+        return child
+        #alpha = 0.5
+        #return alpha * parent1 + (1 - alpha) * parent2
 
     def next_generation(self, sorted_population):
         parents = self.select_parents(sorted_population)
         new_population = []
         
-        fitness_values = [fitness for _, fitness, in sorted_population]
-        avg_fitness = sum(fitness_values) / len(fitness_values)
+        #fitness_values = [fitness for _, fitness, in sorted_population]
+        #avg_fitness = sum(fitness_values) / len(fitness_values)
 
-        elites = [genome for genome, fitness in sorted_population if fitness > 200]
-        new_population.extend(elites)
+        #elites = [genome for genome, fitness in sorted_population if fitness > 200]
+        #new_population.extend(elites)
 
-        if parents[0] not in new_population:
-            new_population.append(parents[0])
+        #if parents[0] not in new_population:
+        new_population.append(parents[0])
         
 
         while len(new_population) < self.population_size:

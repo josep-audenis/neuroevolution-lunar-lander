@@ -11,13 +11,13 @@ def main():
     arg = parser.parse_args()
 
     input_size = 8
-    hidden1_size = 8
-    hidden2_size = 8
+    hidden1_size = 10
+    hidden2_size = 10
     output_size = 4
 
-    population_size = 100
-    mutation_rate = 0.01
-    generations = 1000
+    population_size = 50    # Video 16 mosaic
+    mutation_rate = 0.05
+    generations = 5000
 
     render = True if arg.render else False
 

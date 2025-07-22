@@ -5,13 +5,11 @@ import imageio.v2 as imageio
 from evolution.neural_network import NeuralNetwork
 
 
-def evaluate_genome(genome, input_size, hidden1_size, hidden2_size, output_size, n_genome, generation, seed, render=False):
-    seeds = [random.randint(0, 1000) for _ in range(5)]
+def evaluate_genome(genome, input_size, hidden1_size, hidden2_size, output_size, n_genome, generation, seeds, render=False):
     total_rewards = []
 
-
+    env = gym.make("LunarLander-v3", render_mode="rgb_array" if (render and (generation == 0 or generation % 100 == 0)) else None)
     for seed in seeds:
-        env = gym.make("LunarLander-v3", render_mode="rgb_array" if render else None)
         obs, _ = env.reset(seed=seed)
         total_reward = 0
         done = False
