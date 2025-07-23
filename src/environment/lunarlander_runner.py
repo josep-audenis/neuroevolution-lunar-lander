@@ -38,4 +38,4 @@ def evaluate_genome(genome, input_size, hidden1_size, hidden2_size, output_size,
             imageio.mimsave(f"assets/gifs/lunarlander_{generation}.{n_genome}.{seed}_{total_reward:.2f}.gif", frames, fps = 45, loop=0)
 
 
-    return total_reward
+    return total_reward/len(seeds)
