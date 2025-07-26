@@ -1,4 +1,4 @@
-# Neuroevolution LunarLander-v2
+# Neuroevolution LunarLander-v3
 
 This project explores how simple genetic algorithms can be used to solve reinforcement learning environments by evolving neural networks, completely bypassing traditional gradient-based methods like backpropagation.
 
