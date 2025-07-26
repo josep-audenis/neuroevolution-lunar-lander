@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import argparse
+import json
 
 from evolution.genetic_algorithm import GeneticAlgorithm
 
@@ -17,7 +18,7 @@ def main():
 
     population_size = 50    # Video 16 mosaic
     mutation_rate = 0.05
-    generations = 5000
+    generations = 500
 
     render = True if arg.render else False
 
@@ -40,6 +41,13 @@ def main():
         worst_fitness_history.append(worst_fitness)
 
         ga.next_generation(sorted_population)
+
+    with open("assets/data/fitness_stats.json", "w") as f:
+        json.dump({
+            "best": best_fitness_history,
+            "avg": avg_fitness_history,
+            "worst": worst_fitness_history
+        }, f)
 
     plt.plot(best_fitness_history, label="Best Fitness")
     plt.plot(avg_fitness_history, label="Average Fitness")
