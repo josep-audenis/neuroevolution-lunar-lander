@@ -18,7 +18,7 @@ def main():
 
     population_size = 50    # Video 16 mosaic
     mutation_rate = 0.05
-    generations = 500
+    generations = 5000
 
     render = True if arg.render else False
 
